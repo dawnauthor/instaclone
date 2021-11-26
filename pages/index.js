@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Header, Feed } from '../components';
+import { Header, Feed, Modal } from '../components';
 
 export default function Home() {
   return (
@@ -10,7 +10,7 @@ export default function Home() {
 		</Head>
 		<Header />
 		<Feed />
-		{/* modal = not always shown */}
+		<Modal />
 	</div>
   );
 };

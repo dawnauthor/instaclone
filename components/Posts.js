@@ -1,61 +1,32 @@
 
 import { useEffect, useState } from 'react';
-import { time } from 'faker';
+import { collection, onSnapshot, orderBy, query } from '@firebase/firestore';
+import { db } from '../firebase';
 import { Post } from './';
 
-const posts = [
-	{
-		id: '123',
-		username: 'dtaylor',
-		userImg: 'http://lorempixel.com/400/200/city',
-		img: 'http://lorempixel.com/400/200/city',
-		caption: 'This is DOPE'
-	},
-	{
-		id: '122223',
-		username: 'dtaylor',
-		userImg: 'http://lorempixel.com/400/200/city',
-		img: 'http://lorempixel.com/400/200/city',
-		caption: 'This is DOPE'
-	},
-	{
-		id: '13323',
-		username: 'dtaylor',
-		userImg: 'http://lorempixel.com/400/200/city',
-		img: 'http://lorempixel.com/400/200/city',
-		caption: 'This is DOPE'
-	},
-	{
-		id: '14423',
-		username: 'dtaylor',
-		userImg: 'http://lorempixel.com/400/200/city',
-		img: 'http://lorempixel.com/400/200/city',
-		caption: 'This is DOPE'
-	},
-]
 const Posts = () => {
-	// const [posts, setPosts] = useState([]);
+	const [posts, setPosts] = useState([]);
 
-	// useEffect(() => {
-	// 	const posts = [...Array(20)].map((_, index) => ({
-	// 		id: time
-	// 	}));
-	// 	setPosts(posts);
-	// }, []);
+	useEffect(() => {
+		return onSnapshot(query(collection(db, 'posts'), orderBy('timestamp', 'desc')), snapshot => {
+			setPosts(snapshot.docs);
+		});
+	}, [db]);
+
 	return (
 		<div>
 			{posts.map((post) => (
 				<Post
 					key={post.id}
 					id={post.id}
-					username={post.username}
-					userImg={post.userImg}
-					img={post.img}
-					caption={post.caption}
+					username={post.data().username}
+					userImg={post.data().profileImg}
+					img={post.data().image}
+					caption={post.data().caption}
 				/>
 			))}
 		</div>
 	);
-}
+};
 
 export default Posts;
