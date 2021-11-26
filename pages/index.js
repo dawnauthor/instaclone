@@ -3,7 +3,7 @@ import { Header, Feed } from '../components';
 
 export default function Home() {
   return (
-	<div className="">
+	<div>
 		<Head>
 			<title>Instaclone</title>
 			<link rel="icon" href="/favicon.ico" />
