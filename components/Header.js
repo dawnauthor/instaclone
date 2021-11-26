@@ -21,6 +21,9 @@ const Header = () => {
 
 	return (
 		<div className="sticky top-0 z-50 border-b bg-white border-gray-500 shadow-sm">
+			<div class="flex items-center bg-red-500 text-white text-sm font-bold px-4 py-3" role="alert">
+				<p>This is a web development project meant to resemble Instagram.</p>
+			</div>
 			<div className="flex justify-between max-w-6xl mx-5 lg:mx-auto">
 				<div onClick={() => router.push('/')} className="relative hidden lg:inline-grid w-24 cursor-pointer">
 					<Image
@@ -29,7 +32,6 @@ const Header = () => {
 						objectFit="contain"
 					/>
 				</div>
-				<p>Not a real app</p>
 				<div onClick={() => router.push('/')} className="relative w-10 lg:hidden flex-shrink-0 cursor-pointer">
 					<Image
 						src="https://links.papareact.com/jjm"
