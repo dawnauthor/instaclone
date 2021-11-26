@@ -29,6 +29,7 @@ const Header = () => {
 						objectFit="contain"
 					/>
 				</div>
+				<p>Not a real app</p>
 				<div onClick={() => router.push('/')} className="relative w-10 lg:hidden flex-shrink-0 cursor-pointer">
 					<Image
 						src="https://links.papareact.com/jjm"
